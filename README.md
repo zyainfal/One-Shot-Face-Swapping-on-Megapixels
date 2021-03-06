@@ -1,8 +1,10 @@
 # One-Shot-Face-Swapping-on-Megapixels
-This is the official repository of our CVPR2021 paper: One Shot Face Swapping on Megapixels
+This is the official implementation of our CVPR2021 paper: One Shot Face Swapping on Megapixels.
 
-## Prerequest
+## Requirements
 
 ## How to Use
+
+## PreTrained Model
 
 ## Dataset
