@@ -22,7 +22,7 @@ Based on [CelebA-HQ](https://github.com/zyainfal/progressive_growing_of_gans), w
 
 Following the license of [CelebA-HQ](https://github.com/zyainfal/progressive_growing_of_gans), the dataset is made freely available for non-commercial use under the Creative Commons [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode) license. 
 
-| Swapping Module    | number of images |
+| Swapping Module    | Number of Images |
 | ------------------ | ---------------- |
 | MegaFS-LCR         | 30010            |
 | MegaFS-IDInjection | 30441            |
