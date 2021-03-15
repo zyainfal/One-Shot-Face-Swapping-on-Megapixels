@@ -21,7 +21,8 @@ In CVPR 2021.
 ## Dataset
 
 This dataset is built for *forgery detection* and *face swapping* research, as test dataset and comparative results respectively.
-Based on CelebA-HQ, we have swapped faces on $1024\times1024$ and divided swapped faces into three subsets according to three swapping modules designed in our paper. Following the license of Celeba-HQ, the dataset is made freely available for non-commercial use under the Creative Commons [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode) license. 
+
+Based on CelebA-HQ, we have swapped faces on $$1024\times1024$$ and divided swapped faces into three subsets according to three swapping modules designed in our paper. Following the license of Celeba-HQ, the dataset is made freely available for non-commercial use under the Creative Commons [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode) license. 
 
 | Swapping Module    | number of images |
 | ------------------ | ---------------- |
