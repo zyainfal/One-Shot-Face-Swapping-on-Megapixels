@@ -1,7 +1,6 @@
 # One Shot Face Swapping on Megapixels
 
-**One Shot Face Swapping on Megapixels** | [[Paper]](https://arxiv.org) 
-
+**One Shot Face Swapping on Megapixels**
 *Yuhao Zhu, Qi Li, Jian Wang, Chengzhong Xu* and *Zhenan Sun*
 
 In CVPR 2021.
@@ -33,12 +32,6 @@ Each image is named as **targetID_sourceID.ipg**, where ID represents the image 
 ## Downloads
 * [Google Drive](https://drive.google.com/drive/folders/1K6114RZv6goY-8xuxQmSamcrW2i29nG7?usp=sharing)
 * [Baidu Cloud](https://pan.baidu.com/s/19vRj6jPtzxkDm2h7vFXf4w) (access code: 6bbh)
-
-## To Do
-
-- [x] Release the dataset.
-- [ ] Update paper link.
-- [ ] Inference code.
 
 ## Citation
 If you found this dataset is helpful, please cite:
