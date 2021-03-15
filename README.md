@@ -1,5 +1,3 @@
-# One Shot Face Swapping on Megapixels
-
 ![title](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/title.PNG)
 
 ![8237_9195](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/8237_9195.jpg)
