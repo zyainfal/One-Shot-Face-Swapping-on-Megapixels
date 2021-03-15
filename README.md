@@ -26,7 +26,7 @@ Based on CelebA-HQ, we divided swapped faces into three subsets according to thr
 | ------------------ | ---------------- |
 | MegaFS-LCR         | 30010            |
 | MegaFS-IDInjection | 30441            |
-| MegaFS-FTM         | 30040            |
+| MegaFS-FTM         | 30038            |
 
 Each image is named as **targetID_sourceID.ipg**, where ID represents the image offset in CelebA-HQ, source image provides the identity and target image provides other information.
 
