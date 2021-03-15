@@ -6,7 +6,6 @@
 
 In CVPR 2021.
 
-![pipeline](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/5930_13526.jpg)
 ![8237_9195](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/8237_9195.jpg)
 
 **Abstract:**<br/>
@@ -16,6 +15,7 @@ In CVPR 2021.
 ------
 
 ![pipeline](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/pipeline.jpg)
+![5930_13526](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/5930_13526.jpg)
 
 ------
 
