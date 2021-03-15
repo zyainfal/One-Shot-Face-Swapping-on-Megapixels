@@ -1,6 +1,6 @@
 ![title](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/title.PNG)
 
-![snapshot](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/snapshot1.jpg)
+![snapshot](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/snapshot1.png)
 
 In CVPR 2021.
 
