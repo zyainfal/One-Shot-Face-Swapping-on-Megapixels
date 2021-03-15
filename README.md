@@ -20,7 +20,7 @@ In CVPR 2021.
 
 ## Dataset
 
-This dataset is built for *forgery detection* and *face swapping* research, as test dataset and comparative results respectively.
+This dataset is built for ***forgery detection*** and ***face swapping*** research, as test dataset and comparative results respectively.
 
 Based on CelebA-HQ, we have swapped faces on ![](http://latex.codecogs.com/svg.latex?1024\times1024) and divided them into three subsets according to the three swapping modules designed in our paper. 
 
