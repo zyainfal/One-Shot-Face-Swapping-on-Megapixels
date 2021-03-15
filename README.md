@@ -1,8 +1,6 @@
 # One Shot Face Swapping on Megapixels
 
-**One Shot Face Swapping on Megapixels**
-
-*Yuhao Zhu, Qi Li, Jian Wang, Chengzhong Xu* and *Zhenan Sun*
+![title](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/title.PNG)
 
 In CVPR 2021.
 
