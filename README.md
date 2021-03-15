@@ -26,13 +26,11 @@ Based on [CelebA-HQ](https://github.com/zyainfal/progressive_growing_of_gans), w
 
 Following the license of [CelebA-HQ](https://github.com/zyainfal/progressive_growing_of_gans), the dataset is made freely available for non-commercial use under the Creative Commons [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode) license. 
 
-<div style="text-align:center">
 | Swapping Module    | number of images |
 | ------------------ | ---------------- |
 | MegaFS-LCR         | 30010            |
 | MegaFS-IDInjection | 30441            |
 | MegaFS-FTM         | 30038            |
-</div>
 
 Each image is named as **targetID_sourceID.ipg**, where ID represents the image offset in CelebA-HQ, source image provides the identity and target image provides other information.
 
