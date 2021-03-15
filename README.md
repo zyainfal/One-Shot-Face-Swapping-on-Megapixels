@@ -1,6 +1,7 @@
 # One Shot Face Swapping on Megapixels
 
 **One Shot Face Swapping on Megapixels**
+
 *Yuhao Zhu, Qi Li, Jian Wang, Chengzhong Xu* and *Zhenan Sun*
 
 In CVPR 2021.
