@@ -24,7 +24,7 @@ Following the license of [CelebA-HQ](https://github.com/zyainfal/progressive_gro
 | MegaFS-IDInjection | 30441            |
 | MegaFS-FTM         | 30038            |
 
-Each image is named as **targetID_sourceID.ipg**, where ID represents the image offset in CelebA-HQ, source image provides the identity and target image provides other information.
+Each image is named as **targetID_sourceID.jpg**, where ID represents the image offset in CelebA-HQ, source image provides the identity and target image provides other information.
 
 ## Downloads
 * [Google Drive](https://drive.google.com/drive/folders/1K6114RZv6goY-8xuxQmSamcrW2i29nG7?usp=sharing)
