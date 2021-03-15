@@ -2,7 +2,7 @@
 
 ![snapshot](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/snapshot1.png)
 
-<p align="left">In CVPR 2021.</p>
+<div align="center">In CVPR 2021.</div>
 
 **Abstract:**<br/>
 
