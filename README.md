@@ -33,7 +33,7 @@ Each image is named as **targetID_sourceID.jpg**, where ID represents the image 
 ## Citation
 If you found this dataset is helpful, please cite:
 ```
-@inproceedings{MegaFS,
+@inproceedings{zhu2021megafs,
   title={One Shot Face Swapping on Megapixels},
   author={Zhu, Yuhao and Li, Qi and Wang, Jian and Xu, Chengzhong and Sun, Zhenan},
   booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
