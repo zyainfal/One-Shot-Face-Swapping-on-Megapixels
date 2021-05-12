@@ -14,9 +14,9 @@
 
 This dataset is built for ***forgery detection*** and ***face swapping*** research, as test dataset and comparative results respectively.
 
-Based on [CelebA-HQ](https://github.com/zyainfal/progressive_growing_of_gans), we have swapped faces on ![](http://latex.codecogs.com/svg.latex?1024\times1024) and divided them into three subsets according to the three swapping modules designed in our paper. 
+Based on [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans), we have swapped faces on ![](http://latex.codecogs.com/svg.latex?1024\times1024) and divided them into three subsets according to the three swapping modules designed in our paper. 
 
-Following the license of [CelebA-HQ](https://github.com/zyainfal/progressive_growing_of_gans), the dataset is made freely available for non-commercial use under the Creative Commons [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode) license. 
+Following the license of [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans), the dataset is made freely available for non-commercial use under the Creative Commons [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode) license. 
 
 | Swapping Module    | Number of Images |
 | ------------------ | ---------------- |
