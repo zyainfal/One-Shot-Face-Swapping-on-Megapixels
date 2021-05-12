@@ -1,9 +1,8 @@
-[![plink](https://img.shields.io/badge/cvpr2021-02827-blue.svg)](http://arxiv.org/abs/2105.04932)
 ![title](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/title.PNG)
 
 ![snapshot](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/snapshot1.png)
 
-<div align="right">In CVPR 2021</div>
+[![plink](https://img.shields.io/badge/cvpr2021-02827-blue.svg)](http://arxiv.org/abs/2105.04932)<div align="right">In CVPR 2021</div>
 
 ## Abstract
 
