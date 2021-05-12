@@ -2,7 +2,7 @@
 
 ![snapshot](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/imgs/snapshot1.png)
 
-<div align="right">In CVPR 2021 | [Paper](http://arxiv.org/abs/2105.04932)</div>
+<div align="right">In CVPR 2021 </div> | [Paper](http://arxiv.org/abs/2105.04932)
 
 ## Abstract
 
