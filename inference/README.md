@@ -16,7 +16,7 @@ Implementation of [**One Shot Face Swapping on Megapixels**](http://arxiv.org/ab
 Please download [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans#preparing-datasets-for-training) and [CelebAMask-HQ](https://github.com/switchablenorms/CelebAMask-HQ).
 Please note the mask label is assigned as
 
-  |                 |             |             |
+  | label list      |             |             |
   | --------------- | ----------- | ----------- |
   | 0: 'background' | 1: 'skin'   | 2: 'l_brow' |
   | 3: 'r_brow'     | 4: 'l_eye'  | 5: 'r_eye'  |
