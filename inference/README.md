@@ -17,13 +17,18 @@ Please download [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_ga
 
 ### Checkpoints
 
-[Baidu](https://pan.baidu.com/s/1DPNnU9zmkEdef6WT79J5Wg): 7nov
+[Baidu Cloud](https://pan.baidu.com/s/1DPNnU9zmkEdef6WT79J5Wg) (access code: 7nov)
 
 [Google Drive](https://drive.google.com/drive/folders/1XDakvzNHDtC7G1d1Zn8MjPbmen4LKLPw?usp=sharing)
 
 ### Inference
 
-> python inference.py --swap_type [ftm/injection/lcr] --img_root [CelebAHQ-PATH] --mask_root [CelebAMaskHQ-PATH] --srcID [INT-NUMBER] --tgtID [INT-NUMBER]
+> python inference.py 
+> --swap_type [ftm/injection/lcr] 
+> --img_root [CelebAHQ-PATH] 
+> --mask_root [CelebAMaskHQ-PATH] 
+> --srcID [INT-NUMBER] 
+> --tgtID [INT-NUMBER]
 
 The result is rearrange as *source_image, target_image, swapped_face, refined_swapped_face*, where  *refined_swapped_face* is the reconstructed version of *swapped_face*. Please refer more details in the provided codes.
 
