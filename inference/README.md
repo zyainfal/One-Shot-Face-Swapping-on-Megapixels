@@ -24,10 +24,15 @@ Please download [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_ga
 ### Inference
 
 > python inference.py 
+> 
 > --swap_type [ftm/injection/lcr] 
+> 
 > --img_root [CelebAHQ-PATH] 
+> 
 > --mask_root [CelebAMaskHQ-PATH] 
+> 
 > --srcID [INT-NUMBER] 
+> 
 > --tgtID [INT-NUMBER]
 
 The result is rearrange as *source_image, target_image, swapped_face, refined_swapped_face*, where  *refined_swapped_face* is the reconstructed version of *swapped_face*. Please refer more details in the provided codes.
