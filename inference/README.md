@@ -31,15 +31,15 @@ The result is rearrange as *source_image, target_image, swapped_face, refined_sw
 
 - **FTM**
 
-![ftm](H:\MegaFS\inference\imgs\ftm.jpg)
+![ftm](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/inference/imgs/ftm.jpg)
 
 - **ID Injection**
 
-![injection](H:\MegaFS\inference\imgs\injection.jpg)
+![injection](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/inference/imgs/injection.jpg)
 
 - **LCR**
 
-![lcr](H:\MegaFS\inference\imgs\lcr.jpg)
+![lcr](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/inference/imgs/lcr.jpg)
 
 ## License
 
