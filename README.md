@@ -12,7 +12,7 @@
 ## How to Use
 Please refer [README.md](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/inference/README.md) for more details.
 
-## Dataset
+## MegaFS Dataset
 
 This dataset is built for ***forgery detection*** and ***face swapping*** research, as test dataset and comparative results respectively.
 
@@ -28,7 +28,7 @@ Following the license of [CelebA-HQ](https://github.com/tkarras/progressive_grow
 
 Each image is named as **targetID_sourceID.jpg**, where ID represents the image offset in CelebA-HQ, source image provides the identity and target image provides other information.
 
-## Downloads
+## Dataset Download Links
 * [Google Drive](https://drive.google.com/drive/folders/1K6114RZv6goY-8xuxQmSamcrW2i29nG7?usp=sharing)
 * [Baidu Cloud](https://pan.baidu.com/s/19vRj6jPtzxkDm2h7vFXf4w) (access code: 6bbh)
 
