@@ -60,7 +60,7 @@ All the material, including source code, is made freely available for non-commer
   title={One Shot Face Swapping on Megapixels},
   author={Zhu, Yuhao and Li, Qi and Wang, Jian and Xu, Chengzhong and Sun, Zhenan},
   booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition (CVPR)},
-  pages = {TBD},
+  pages = {4834-4844},
   month = {June},
   year={2021}
 }
