@@ -23,15 +23,15 @@ Please download [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_ga
 
 ### Inference
 
-> python inference.py 
+> python inference.py \
 > 
-> --swap_type [ftm/injection/lcr] 
+> --swap_type [ftm/injection/lcr] \
 > 
-> --img_root [CelebAHQ-PATH] 
+> --img_root [CelebAHQ-PATH] \
 > 
-> --mask_root [CelebAMaskHQ-PATH] 
+> --mask_root [CelebAMaskHQ-PATH] \
 > 
-> --srcID [INT-NUMBER] 
+> --srcID [INT-NUMBER] \
 > 
 > --tgtID [INT-NUMBER]
 
