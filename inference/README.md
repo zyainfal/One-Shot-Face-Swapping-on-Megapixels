@@ -36,7 +36,7 @@ in case of updated CelebAMask-HQ dataset.
 [Google Drive](https://drive.google.com/drive/folders/1XDakvzNHDtC7G1d1Zn8MjPbmen4LKLPw?usp=sharing)
 
 ### Inference
-Put two provided files under *stylegan2-pytorch directory*, then run:
+Put two provided files under *stylegan2-pytorch* directory, then run:
 
 > python inference.py \
 > 
