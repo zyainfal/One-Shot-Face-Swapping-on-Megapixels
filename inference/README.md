@@ -1,82 +1,110 @@
-# MegaFS PyTorch Inference Code
+# StyleGAN 2 in PyTorch
 
-Implementation of [**One Shot Face Swapping on Megapixels**](http://arxiv.org/abs/2105.04932) in PyTorch
+Implementation of Analyzing and Improving the Image Quality of StyleGAN (https://arxiv.org/abs/1912.04958) in PyTorch
+
+## Notice
+
+I have tried to match official implementation as close as possible, but maybe there are some details I missed. So please use this implementation with care.
 
 ## Requirements
 
-- Please refer [stylegan2-pytorch](https://github.com/rosinality/stylegan2-pytorch) to get StyleGAN2 environment (converted model is provided in this repo)
-- Python 3.6
-- PyTorch 1.5.1 (it is ok that  [stylegan2-pytorch](https://github.com/rosinality/stylegan2-pytorch) uses 1.3.1)
+I have tested on:
+
+- PyTorch 1.3.1
 - CUDA 10.1/10.2
 
 ## Usage
 
-### Dataset
+First create lmdb datasets:
 
-Please download [CelebA-HQ](https://github.com/tkarras/progressive_growing_of_gans#preparing-datasets-for-training) and [CelebAMask-HQ](https://github.com/switchablenorms/CelebAMask-HQ).
+> python prepare_data.py --out LMDB_PATH --n_worker N_WORKER --size SIZE1,SIZE2,SIZE3,... DATASET_PATH
 
-Also, please note the mask label is assigned as
+This will convert images to jpeg and pre-resizes it. This implementation does not use progressive growing, but you can create multiple resolution datasets using size arguments with comma separated lists, for the cases that you want to try another resolutions later.
 
-  | label list      |             |             |
-  | --------------- | ----------- | ----------- |
-  | 0: 'background' | 1: 'skin'   | 2: 'l_brow' |
-  | 3: 'r_brow'     | 4: 'l_eye'  | 5: 'r_eye'  |
-  | 6: 'eye_g'      | 7: 'l_ear'  | 8: 'r_ear'  |
-  | 9: 'ear_r'      | 10: 'nose'  | 11: 'mouth' |
-  | 12: 'u_lip'     | 13: 'l_lip' | 14: 'neck'  |
-  | 15: 'neck_l'    | 16: 'cloth' | 17: 'hair'  |
-  | 18: 'hat'       |             |             |
-  
-in case of updated CelebAMask-HQ dataset.
+Then you can train model in distributed settings
 
-### Checkpoints
+> python -m torch.distributed.launch --nproc_per_node=N_GPU --master_port=PORT train.py --batch BATCH_SIZE LMDB_PATH
 
-[Baidu Cloud](https://pan.baidu.com/s/1DPNnU9zmkEdef6WT79J5Wg) (access code: 7nov)
+train.py supports Weights & Biases logging. If you want to use it, add --wandb arguments to the script.
 
-[Google Drive](https://drive.google.com/drive/folders/1XDakvzNHDtC7G1d1Zn8MjPbmen4LKLPw?usp=sharing)
+#### SWAGAN
 
-### Inference
-Put two provided files under *stylegan2-pytorch* directory, then run:
+This implementation experimentally supports SWAGAN: A Style-based Wavelet-driven Generative Model (https://arxiv.org/abs/2102.06108). You can train SWAGAN by using
 
-> python inference.py \
-> 
-> --swap_type [ftm/injection/lcr] \
-> 
-> --img_root [CelebAHQ-PATH] \
-> 
-> --mask_root [CelebAMaskHQ-PATH] \
-> 
-> --srcID [INT-NUMBER] \
-> 
-> --tgtID [INT-NUMBER]
+> python -m torch.distributed.launch --nproc_per_node=N_GPU --master_port=PORT train.py --arch swagan --batch BATCH_SIZE LMDB_PATH
 
-The result is rearrange as *source_image, target_image, swapped_face, refined_swapped_face*, where  *refined_swapped_face* is the reconstructed version of *swapped_face*. Please refer more details in the provided codes.
+As noted in the paper, SWAGAN trains much faster. (About ~2x at 256px.)
+
+### Convert weight from official checkpoints
+
+You need to clone official repositories, (https://github.com/NVlabs/stylegan2) as it is requires for load official checkpoints.
+
+For example, if you cloned repositories in ~/stylegan2 and downloaded stylegan2-ffhq-config-f.pkl, You can convert it like this:
+
+> python convert_weight.py --repo ~/stylegan2 stylegan2-ffhq-config-f.pkl
+
+This will create converted stylegan2-ffhq-config-f.pt file.
+
+### Generate samples
+
+> python generate.py --sample N_FACES --pics N_PICS --ckpt PATH_CHECKPOINT
+
+You should change your size (--size 256 for example) if you train with another dimension.
+
+### Project images to latent spaces
+
+> python projector.py --ckpt [CHECKPOINT] --size [GENERATOR_OUTPUT_SIZE] FILE1 FILE2 ...
+
+### Closed-Form Factorization (https://arxiv.org/abs/2007.06600)
+
+You can use `closed_form_factorization.py` and `apply_factor.py` to discover meaningful latent semantic factor or directions in unsupervised manner.
+
+First, you need to extract eigenvectors of weight matrices using `closed_form_factorization.py`
+
+> python closed_form_factorization.py [CHECKPOINT]
+
+This will create factor file that contains eigenvectors. (Default: factor.pt) And you can use `apply_factor.py` to test the meaning of extracted directions
+
+> python apply_factor.py -i [INDEX_OF_EIGENVECTOR] -d [DEGREE_OF_MOVE] -n [NUMBER_OF_SAMPLES] --ckpt [CHECKPOINT] [FACTOR_FILE]
+
+For example,
+
+> python apply_factor.py -i 19 -d 5 -n 10 --ckpt [CHECKPOINT] factor.pt
+
+Will generate 10 random samples, and samples generated from latents that moved along 19th eigenvector with size/degree +-5.
+
+![Sample of closed form factorization](factor_index-13_degree-5.0.png)
+
+## Pretrained Checkpoints
+
+[Link](https://drive.google.com/open?id=1PQutd-JboOCOZqmd95XWxWrO8gGEvRcO)
+
+I have trained the 256px model on FFHQ 550k iterations. I got FID about 4.5. Maybe data preprocessing, resolution, training loop could made this difference, but currently I don't know the exact reason of FID differences.
 
 ## Samples
 
-- **FTM**
+![Sample with truncation](doc/sample.png)
 
-![ftm](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/inference/imgs/ftm.jpg)
+Sample from FFHQ. At 110,000 iterations. (trained on 3.52M images)
 
-- **ID Injection**
+![MetFaces sample with non-leaking augmentations](doc/sample-metfaces.png)
 
-![injection](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/inference/imgs/injection.jpg)
+Sample from MetFaces with Non-leaking augmentations. At 150,000 iterations. (trained on 4.8M images)
 
-- **LCR**
+### Samples from converted weights
 
-![lcr](https://github.com/zyainfal/One-Shot-Face-Swapping-on-Megapixels/blob/main/inference/imgs/lcr.jpg)
+![Sample from FFHQ](doc/stylegan2-ffhq-config-f.png)
+
+Sample from FFHQ (1024px)
+
+![Sample from LSUN Church](doc/stylegan2-church-config-f.png)
+
+Sample from LSUN Church (256px)
 
 ## License
 
-All the material, including source code, is made freely available for non-commercial use under the Creative Commons [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/legalcode) license. Feel free to use any of the material in your own work, as long as you give us appropriate credit by mentioning the title and author list of our paper:
+Model details and custom CUDA kernel codes are from official repostiories: https://github.com/NVlabs/stylegan2
 
-```
-@inproceedings{zhu2021megafs,
-  title={One Shot Face Swapping on Megapixels},
-  author={Zhu, Yuhao and Li, Qi and Wang, Jian and Xu, Chengzhong and Sun, Zhenan},
-  booktitle={Proceedings of the IEEE conference on computer vision and pattern recognition (CVPR)},
-  pages = {4834-4844},
-  month = {June},
-  year={2021}
-}
-```
+Codes for Learned Perceptual Image Patch Similarity, LPIPS came from https://github.com/richzhang/PerceptualSimilarity
+
+To match FID scores more closely to tensorflow official implementations, I have used FID Inception V3 implementations in https://github.com/mseitzer/pytorch-fid

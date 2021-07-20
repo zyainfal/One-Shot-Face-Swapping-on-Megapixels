@@ -1,4 +1,5 @@
 import argparse
+import glob
 import os
 import cv2
 from megafs import resnet50, HieRFE, Generator, FaceTransferModule
@@ -9,7 +10,8 @@ import torch.nn as nn
 from torch.nn import functional as F
 import torchvision.transforms.functional as tF
 
-def encode_segmentation_rgb(segmentation, no_neck=True):
+def encode_segmentation_rgb(segmentation, tgt_idx, mask_root, no_neck=True):
+    '''
     parse = segmentation[:,:,0]
 
     face_part_ids = [1, 2, 3, 4, 5, 6, 10, 12, 13] if no_neck else [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 13, 14]
@@ -26,8 +28,33 @@ def encode_segmentation_rgb(segmentation, no_neck=True):
     mouth_map[valid_index] = 255
     valid_index = np.where(parse==hair_id)
     hair_map[valid_index] = 255
+    '''
+    file_list = glob.glob(os.path.join(mask_root, "**/{0:05d}**.png".format(tgt_idx)), recursive=True)
+    name_list = [0 for i in range(len(file_list))]
 
-    return np.stack([face_map, mouth_map, hair_map], axis=2)
+    tgt_face_mask = np.zeros([segmentation.shape[0], segmentation.shape[1]])
+    tgt_mouth_mask = np.zeros([segmentation.shape[0], segmentation.shape[1]])
+    tgt_hair_mask = np.zeros([segmentation.shape[0], segmentation.shape[1]])
+
+    for file in file_list:
+        file_1 = file.split('_')
+        name_list[file_list.index(file)] = file_1[-1]
+        split = os.path.splitext(file_1[-1])
+        if split[0] == 'skin':
+            tgt_face_mask = cv2.imread(file)
+        if split[0] == 'mouth':
+            tgt_mouth_mask = cv2.imread(file)
+        if split[0] == 'hair':
+            tgt_hair_mask = cv2.imread(file)
+
+    tgt_face_mask = cv2.resize(tgt_face_mask, (1024, 1024), interpolation=cv2.INTER_AREA)
+    tgt_mouth_mask = cv2.resize(tgt_mouth_mask, (1024, 1024), interpolation=cv2.INTER_AREA)
+    tgt_hair_mask = cv2.resize(tgt_hair_mask, (1024, 1024), interpolation=cv2.INTER_AREA)
+    tgt_face_mask = cv2.cvtColor(tgt_face_mask, cv2.COLOR_BGR2GRAY)
+    tgt_mouth_mask = cv2.cvtColor(tgt_mouth_mask, cv2.COLOR_BGR2GRAY)
+    tgt_hair_mask = cv2.cvtColor(tgt_hair_mask, cv2.COLOR_BGR2GRAY)
+    
+    return np.stack([tgt_face_mask, tgt_mouth_mask, tgt_hair_mask], axis=2)
 
 class SoftErosion(nn.Module):
     def __init__(self, kernel_size=15, threshold=0.6, iterations=1):
@@ -98,11 +125,12 @@ class MegaFS(object):
     def read_pair(self, src_idx, tgt_idx):
         src_face = cv2.imread(os.path.join(self.img_root, "{}.jpg".format(src_idx)))
         tgt_face = cv2.imread(os.path.join(self.img_root, "{}.jpg".format(tgt_idx)))
-        tgt_mask  = cv2.imread(os.path.join(self.mask_root, "{}.png".format(tgt_idx)))
+        #tgt_mask  = cv2.imread(os.path.join(self.mask_root, "{}.png".format(tgt_idx)))
 
         src_face_rgb = src_face[:, :, ::-1]
         tgt_face_rgb = tgt_face[:, :, ::-1]
-        tgt_mask = encode_segmentation_rgb(tgt_mask)
+        tgt_mask = encode_segmentation_rgb(tgt_face, tgt_idx, self.mask_root)
+        print(tgt_mask.shape)
         return src_face_rgb, tgt_face_rgb, tgt_mask
 
     def preprocess(self, src, tgt):
@@ -162,7 +190,7 @@ class MegaFS(object):
         return fake_refine_numpy
     
     def postprocess(self, swapped_face, target, target_mask):
-        target_mask = cv2.resize(target_mask, (self.size,  self.size))
+        #target_mask = cv2.resize(target_mask, (self.size,  self.size), interpolation=cv2.INTER_AREA)
 
         mask_tensor = torch.from_numpy(target_mask.copy().transpose((2, 0, 1))).float().mul_(1/255.0).cuda()
         face_mask_tensor = mask_tensor[0] + mask_tensor[1]
