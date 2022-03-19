@@ -29,9 +29,10 @@ Following the license of [CelebA-HQ](https://github.com/tkarras/progressive_grow
 Each image is named as **targetID_sourceID.jpg**, where ID represents the image offset in CelebA-HQ, source image provides the identity and target image provides other information.
 
 ## Dataset Download Links
-The data includes swapped faces on CelebA-HQ by MegaFS(FTM, ID injection, LCR), and the swapped faces on FaceForensics++ by MegaFS(256px version) in `MegaFS-FF++.zip`.
+The data includes swapped faces on CelebA-HQ by MegaFS(FTM, ID injection, LCR).
 
-Please note `MegaFS-FF++.zip` contains the swapped faces in frames and the 889 ID folders for anyone in need.
+In addition, `MegaFS-FF++.zip` contains the swapped faces in frames (by MegaFS 256px version) and the 889 ID folders for future research.
+
 * [Google Drive](https://drive.google.com/drive/folders/1K6114RZv6goY-8xuxQmSamcrW2i29nG7?usp=sharing)
 * [Baidu Cloud](https://pan.baidu.com/s/19vRj6jPtzxkDm2h7vFXf4w) (access code: 6bbh)
 
