@@ -33,7 +33,7 @@ The data includes swapped faces on CelebA-HQ by MegaFS(FTM, ID injection, LCR).
 
 In addition, `MegaFS-FF++.zip` contains the swapped faces in frames (by MegaFS 256px version) and the 889 ID folders for future research.
 
-* [Google Drive](https://drive.google.com/drive/folders/1K6114RZv6goY-8xuxQmSamcrW2i29nG7?usp=sharing)
+* [~~Google Drive~~](https://drive.google.com/drive/folders/1K6114RZv6goY-8xuxQmSamcrW2i29nG7?usp=sharing)
 * [Baidu Cloud](https://pan.baidu.com/s/19vRj6jPtzxkDm2h7vFXf4w) (access code: 6bbh)
 
 ## Citation
